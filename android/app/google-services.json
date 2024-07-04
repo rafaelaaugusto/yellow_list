@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "521112115943",
+    "project_id": "yellow-list-af63b",
+    "storage_bucket": "yellow-list-af63b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521112115943:android:ce29a11d10bb4607ec2042",
+        "android_client_info": {
+          "package_name": "com.example.yellow_list"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBtJpzqwdnotiCotUxzfqo2_wxrFxujYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
