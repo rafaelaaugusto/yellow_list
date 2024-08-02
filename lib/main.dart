@@ -2,56 +2,47 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:yellow_list/providers/theme_provider.dart';
+
+import 'theme/style_theme.dart';
+import 'views/home_view.dart';
 import 'views/login_view.dart';
+import 'views/onboarding_view.dart';
 import 'views/register_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends ConsumerStatefulWidget {
+  const App({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My List App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/login': (context) => LoginView(),
-        '/register': (context) => RegisterView(),
-      },
-    );
-  }
+  ConsumerState<App> createState() => _AppState();
 }
 
-class HomeScreen extends StatelessWidget {
+class _AppState extends ConsumerState<App> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My List App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Home Screen'),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: Text('Go to Login'),
-            ),
-          ],
-        ),
+    final defaultTheme = ref.read(themeProvider);
+
+    return FutureBuilder(
+      future: downloadGoogleFonts(),
+      builder: (context, snapshot) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: defaultTheme.theme,
+        routes: {
+          '/': (context) => const OnboardingView(),
+          '/home': (context) => const HomeView(),
+          '/login': (context) => LoginView(),
+          '/register': (context) => RegisterView(),
+        },
       ),
     );
   }

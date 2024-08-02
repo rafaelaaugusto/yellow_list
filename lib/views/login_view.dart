@@ -1,6 +1,8 @@
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../components/yellow_list_component.dart';
 import '../viewmodels/auth_viewmodel.dart';
 
 class LoginView extends ConsumerWidget {
@@ -15,11 +17,12 @@ class LoginView extends ConsumerWidget {
     final authViewModel = ref.read(authViewModelProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(Insets.l * 2),
         child: Column(
           children: [
+            const YellowList(),
             TextField(
               controller: emailController,
               decoration: InputDecoration(labelText: 'Email'),
@@ -37,6 +40,9 @@ class LoginView extends ConsumerWidget {
                       await authViewModel.signIn(
                           emailController.text, passwordController.text);
                       // Handle navigation or error message based on the authentication state
+                      if (context.mounted) {
+                        Navigator.pushNamed(context, '/home');
+                      }
                     },
               child: isLoading ? CircularProgressIndicator() : Text('Login'),
             ),
