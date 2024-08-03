@@ -22,7 +22,7 @@ class CircleButton extends StatelessWidget {
       ),
       icon: isLoading
           ? const CircularProgressIndicator(
-              strokeWidth: 2,
+              strokeWidth: Insets.xxs,
             )
           : const Icon(
               Icons.arrow_forward_ios_rounded,

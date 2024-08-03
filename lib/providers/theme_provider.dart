@@ -13,11 +13,11 @@ class ThemeProvider {
   final ThemeData theme = ThemeData.light(useMaterial3: true).copyWith(
     colorScheme: colorSchemeLight,
     platform: platform,
-    visualDensity: visualDensity,
     textTheme: textTheme,
+    iconTheme: iconThemeData,
+    visualDensity: visualDensity,
     elevatedButtonTheme: elevatedButtonThemeData,
     inputDecorationTheme: inputDecorationTheme,
-    iconTheme: iconThemeData,
     progressIndicatorTheme: progressIndicatorThemeData,
   );
 }
