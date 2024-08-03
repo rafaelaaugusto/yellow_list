@@ -18,12 +18,23 @@ class LoginForm extends StatelessWidget {
         children: [
           ReactiveTextField(
             formControlName: 'email',
-            decoration: const InputDecoration(labelText: 'Email'),
+            decoration: const InputDecoration(
+              labelText: 'Email',
+            ),
+            validationMessages: {
+              ValidationMessage.required: (error) => 'Informe o email',
+              ValidationMessage.email: (error) => 'Informe um email válido'
+            },
           ),
           const SizedBox(height: Insets.xxl),
           ReactiveTextField(
             formControlName: 'password',
-            decoration: const InputDecoration(labelText: 'Senha'),
+            decoration: const InputDecoration(
+              labelText: 'Senha',
+            ),
+            validationMessages: {
+              ValidationMessage.required: (error) => 'Informe a senha',
+            },
           ),
         ],
       ),
