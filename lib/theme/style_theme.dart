@@ -17,7 +17,7 @@ Future<void> downloadGoogleFonts() async {
 
 TextStyle titleMedium() {
   return GoogleFonts.nunitoSans(
-    fontSize: 16,
+    fontSize: Insets.xxl,
     fontWeight: FontWeight.bold,
     color: primary,
   );
@@ -29,7 +29,7 @@ final latoTextTheme = GoogleFonts.latoTextTheme(
 
 final textTheme = latoTextTheme.copyWith(
   titleLarge: GoogleFonts.nunitoSans(
-    fontSize: 30,
+    fontSize: Insets.l * 3,
     fontWeight: FontWeight.bold,
     color: primary,
   ),
@@ -63,7 +63,7 @@ const inputDecorationTheme = InputDecorationTheme(
   filled: true,
   fillColor: background,
   errorBorder: inputStyle,
-  border: InputBorder.none,
+  border: inputStyle,
   enabledBorder: inputStyle,
   focusedBorder: inputStyle,
   contentPadding: EdgeInsets.all(Insets.xl),
