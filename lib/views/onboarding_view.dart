@@ -1,7 +1,7 @@
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 
-import '../components/yellow_list_component.dart';
+import '../components/logo_component.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -13,7 +13,7 @@ class OnboardingView extends StatelessWidget {
         children: [
           Image.asset('assets/images/onboarding.jpg'),
           const Spacer(),
-          const YellowList(),
+          const Logo(),
           const SizedBox(height: Insets.xxl * 3),
           const Text(
             'Crie listas de forma rápida e prática!',

@@ -16,5 +16,8 @@ class ThemeProvider {
     visualDensity: visualDensity,
     textTheme: textTheme,
     elevatedButtonTheme: elevatedButtonThemeData,
+    inputDecorationTheme: inputDecorationTheme,
+    iconTheme: iconThemeData,
+    progressIndicatorTheme: progressIndicatorThemeData,
   );
 }

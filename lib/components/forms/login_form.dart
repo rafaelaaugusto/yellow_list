@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:fleasy/fleasy.dart';
+import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class LoginForm extends StatelessWidget {
@@ -15,8 +16,15 @@ class LoginForm extends StatelessWidget {
       formGroup: form,
       child: Column(
         children: [
-          ReactiveTextField(),
-          ReactiveTextField(),
+          ReactiveTextField(
+            formControlName: 'email',
+            decoration: const InputDecoration(labelText: 'Email'),
+          ),
+          const SizedBox(height: Insets.xxl),
+          ReactiveTextField(
+            formControlName: 'password',
+            decoration: const InputDecoration(labelText: 'Senha'),
+          ),
         ],
       ),
     );

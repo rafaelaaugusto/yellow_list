@@ -41,12 +41,35 @@ final elevatedButtonThemeData = ElevatedButtonThemeData(
     backgroundColor: primary,
     foregroundColor: onPrimary,
     textStyle: titleMedium(),
-    padding: const EdgeInsets.symmetric(
-      vertical: Insets.xl * 2,
-      horizontal: Insets.xxl * 4,
+    padding: const EdgeInsets.all(
+      Insets.xl * 2,
     ),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(Insets.xxl),
     ),
   ),
 );
+
+const inputStyle = OutlineInputBorder(
+  borderSide: BorderSide(
+    color: background,
+  ),
+  borderRadius: BorderRadius.all(
+    Radius.circular(Insets.l),
+  ),
+);
+
+const inputDecorationTheme = InputDecorationTheme(
+  filled: true,
+  fillColor: background,
+  errorBorder: inputStyle,
+  border: InputBorder.none,
+  enabledBorder: inputStyle,
+  focusedBorder: inputStyle,
+  contentPadding: EdgeInsets.all(Insets.xl),
+  labelStyle: TextStyle(color: onBackground),
+);
+
+const iconThemeData = IconThemeData(color: onPrimary);
+
+const progressIndicatorThemeData = ProgressIndicatorThemeData(color: onPrimary);
