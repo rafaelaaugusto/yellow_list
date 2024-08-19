@@ -7,9 +7,9 @@ import 'colors_theme.dart';
 Future<void> downloadGoogleFonts() async {
   try {
     await GoogleFonts.pendingFonts([
-      GoogleFonts.nunitoSans(),
+      GoogleFonts.merriweather(),
       GoogleFonts.lato(),
-      GoogleFonts.nunitoSansTextTheme(),
+      GoogleFonts.merriweatherTextTheme(),
       GoogleFonts.latoTextTheme()
     ]);
   } catch (_) {}
@@ -72,4 +72,6 @@ const inputDecorationTheme = InputDecorationTheme(
 
 const iconThemeData = IconThemeData(color: onPrimary);
 
-const progressIndicatorThemeData = ProgressIndicatorThemeData(color: onPrimary);
+const progressIndicatorThemeData = ProgressIndicatorThemeData(
+  color: onPrimary,
+);
