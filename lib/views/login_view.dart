@@ -16,6 +16,8 @@ class LoginView extends ConsumerStatefulWidget {
 }
 
 class _LoginViewState extends ConsumerState<LoginView> {
+  bool isUserNotFound = false;
+
   FormGroup form = FormGroup({
     'email': FormControl<String>(validators: [
       Validators.required,
@@ -40,7 +42,8 @@ class _LoginViewState extends ConsumerState<LoginView> {
             const Logo(),
             const SizedBox(height: Insets.xxl * 3),
             LoginForm(form: form),
-            const SizedBox(height: 20),
+            const SizedBox(height: Insets.l * 2),
+            if (isUserNotFound) const Text('Email ou senha incorretos.'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,12 +55,22 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 ),
                 CircleButton(
                   onPressed: () async {
-                    await authViewModel.signIn(
-                      form.control('email').value,
-                      form.control('password').value,
-                    );
-                    if (context.mounted) {
-                      Navigator.pushNamed(context, '/home');
+                    form.markAllAsTouched();
+
+                    if (form.valid) {
+                      try {
+                        await authViewModel.signIn(
+                          form.control('email').value,
+                          form.control('password').value,
+                        );
+
+                        isUserNotFound = false;
+                        if (context.mounted) {
+                          Navigator.pushNamed(context, '/home');
+                        }
+                      } catch (e) {
+                        isUserNotFound = true;
+                      }
                     }
                   },
                   isLoading: isLoading,
